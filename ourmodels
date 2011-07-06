@@ -1,0 +1,63 @@
+Nana Kwame
+1.EVENT
+title
+body
+venuetime
+rate
+organisers
+approval
+type
+status
+
+2.NEWS
+title
+body
+created
+updated
+author
+
+3.ANNOUNCEMNET
+title
+body
+updated
+created
+
+Ansah
+4.PICTURE
+name
+created
+updated
+description
+
+5.EMERGENCY
+name
+number
+location
+
+6.ACADEMIC CALENDAR
+datetime
+event
+year
+semester
+
+Lady-Asaph
+7.TIMETABLE
+course(COURSE MODEL)
+exam venue
+exam time
+lecture venue
+lecture time
+course code
+semester
+year
+
+8.COURSE
+course code
+course name
+course abbreviation
+
+NOTE:
+department
+faculty
+
+
