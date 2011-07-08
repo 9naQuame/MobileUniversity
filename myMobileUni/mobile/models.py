@@ -23,11 +23,24 @@ class Calendar(models.Model):
     def __unicode__(self):
 	return self.event
 
+
+class Faculty(models.Model):
+	name = models.CharField(max_length = 60)
+	yearCreated = models.IntegerField()
+	def __unicode__(self):
+		return self.name
+
+class department(models.Model):
+	name = models.CharField(max_length = 60)
+	faculty = models.ForeignKey(Faculty)
+	def __unicode__(self):
+		return self.name
+
 class Course(models.Model):
 	code = models.CharField(max_length = 10)
 	name = models.CharField(max_length = 40)
 	abbreviation = models.CharField(max_length = 10)
-	major = modelForeignKey(Major)
+	department = models.ForeignKey(department)
 	def __unicode__(self):
 		return self.name
 
@@ -39,13 +52,20 @@ class Timetable(models.Model):
 	semester = models.IntegerField()
 	year = models.IntegerField()
 	code = models.ForeignKey(Course)
-	major = models.ForeignKey(Major)
 	def __unicode__(self):
 		return self.code
 
-class Major(models.Model):
-	faculty = models.CharField(max_length = 60)
-	department = models.CharField(max_length = 60)
-	def __unicode__(self):
-		return self.department
+
+
+
+
+admin.site.register(Picture)
+admin.site.register(Emergency)
+admin.site.register(Calendar)
+admin.site.register(Course)
+admin.site.register(Timetable)
+admin.site.register(Faculty)
+admin.site.register(department)
+
+
 
