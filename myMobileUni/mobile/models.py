@@ -5,8 +5,8 @@ class event(models.Model):
 	time = models.DateTimeField(auto_now_add=True)
 	rate = models.DecimalField(max_digits=10, decimal_places=2)
 	organisers = models.TextField()
-	approval = models.BooleanField()
-	eventtype = models.BooleanField()
+	approval = models.TextField()
+	eventtype = models.TextField()
 	status = models.CharField(max_length=10)
 	def __unicode__(self):
 		return self.title
