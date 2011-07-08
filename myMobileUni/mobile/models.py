@@ -27,6 +27,7 @@ class Course(models.Model):
 	code = models.CharField(max_length = 10)
 	name = models.CharField(max_length = 40)
 	abbreviation = models.CharField(max_length = 10)
+	major = modelForeignKey(Major)
 	def __unicode__(self):
 		return self.name
 
@@ -45,7 +46,6 @@ class Timetable(models.Model):
 class Major(models.Model):
 	faculty = models.CharField(max_length = 60)
 	department = models.CharField(max_length = 60)
-	majors = models.CharField(max_length = 60)
 	def __unicode__(self):
-		return self.majors
+		return self.department
 
