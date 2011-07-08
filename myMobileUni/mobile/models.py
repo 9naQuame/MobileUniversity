@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib import admin
 
-class event(models.Model):
+class Event(models.Model):
 	title = models.CharField(max_length=100)
 	body = models.TextField()
 	venue = models.TextField()
@@ -14,7 +14,7 @@ class event(models.Model):
 	def __unicode__(self):
 		return self.title
 
-class news(models.Model):
+class New(models.Model):
 	title = models.CharField(max_length=100)
 	body = models.TextField()
 	created = models.DateField(auto_now_add=True)
@@ -23,7 +23,7 @@ class news(models.Model):
 	def __unicode__(self):
 		return self.title
 
-class announcement(models.Model):
+class Announcement(models.Model):
 	title = models.CharField(max_length=100)
 	body = models.TextField()
 	created = models.DateField(auto_now_add=True)
@@ -92,6 +92,9 @@ admin.site.register(Course)
 admin.site.register(Timetable)
 admin.site.register(Faculty)
 admin.site.register(department)
+admin.site.register(Announcement)
+admin.site.register(New)
+admin.site.register(Event)
 
 
 
