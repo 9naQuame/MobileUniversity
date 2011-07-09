@@ -4,13 +4,13 @@ from django.contrib import admin
 class Event(models.Model):
 	title = models.CharField(max_length=100)
 	body = models.TextField()
-	venue = models.TextField()
+	venue = models.CharField()
 	time = models.TimeField()
 	date = models.DateField()
 	rate = models.DecimalField(max_digits=10, decimal_places=2)
-	organisers = models.TextField()
-	approval = models.TextField()
-	eventtype = models.TextField()
+	organisers = models.CharField()
+	approval = models.CharField()
+	eventtype = models.CharField()
 	status = models.CharField(max_length=10)
 	def __unicode__(self):
 		return self.title
