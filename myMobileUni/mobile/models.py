@@ -5,7 +5,8 @@ class Event(models.Model):
 	title = models.CharField(max_length=100)
 	body = models.TextField()
 	venue = models.TextField()
-	time = models.DateTimeField(auto_now_add=True)
+	time = models.TimeField()
+	date = models.DateField()
 	rate = models.DecimalField(max_digits=10, decimal_places=2)
 	organisers = models.TextField()
 	approval = models.TextField()
@@ -13,6 +14,11 @@ class Event(models.Model):
 	status = models.CharField(max_length=10)
 	def __unicode__(self):
 		return self.title
+
+class EventAdmin(admin.ModelAdmin):
+	list_display = ('title','organisers','venue','date','time')
+	search_fields = ('title','body')
+	list_filter = ('date',)
 
 class New(models.Model):
 	title = models.CharField(max_length=100)
@@ -23,6 +29,11 @@ class New(models.Model):
 	def __unicode__(self):
 		return self.title
 
+class NewAdmin(admin.ModelAdmin):
+	list_display = ('title','created','updated')
+	search_fields = ('title','body')
+	list_filter = ('created',)
+
 class Announcement(models.Model):
 	title = models.CharField(max_length=100)
 	body = models.TextField()
@@ -31,11 +42,16 @@ class Announcement(models.Model):
 	def __unicode__(self):
 		return self.title
 
+class AnnouncementAdmin(admin.ModelAdmin):
+	list_display = ('title','created','updated')
+	search_fields = ('title','body')
+	list_filter = ('created',)
+
 class Picture(models.Model):
     name = models.CharField(max_length=15)
     description = models.TextField()
-    created = models.DateField()
-    updated = models.DateField()
+    created = models.DateField(auto_now_add=True)
+    updated = models.DateField(auto_now=True)
     def __unicode__(self):
         return self.name
 
@@ -92,9 +108,9 @@ admin.site.register(Course)
 admin.site.register(Timetable)
 admin.site.register(Faculty)
 admin.site.register(department)
-admin.site.register(Announcement)
-admin.site.register(New)
-admin.site.register(Event)
+admin.site.register(Announcement,AnnouncementAdmin)
+admin.site.register(New,NewAdmin)
+admin.site.register(Event,EventAdmin)
 
 
 
