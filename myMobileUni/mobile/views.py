@@ -151,4 +151,3 @@ def picture_search(request, term):
     c = Context({'picture_list':picture_list,'term':term})
     return HttpResponse(t.render(c))
 
-

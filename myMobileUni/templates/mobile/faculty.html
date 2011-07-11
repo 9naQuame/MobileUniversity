@@ -1,6 +1,6 @@
 {% extends "mobile/home.html" %}
 {% block content %}
 {% for f in faculty %}
- <div>The name is {{f.name}}</div>
+ <a href="/mobile/facultylist/"><div>{{f.name}}</div></a><br>
 {% endfor %}
 {% endblock %}
