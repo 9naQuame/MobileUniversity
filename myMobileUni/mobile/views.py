@@ -97,7 +97,7 @@ def exam_timetable(request, id, limit=100):
 	course_list = Course.objects.all(post_pk = id)
 	timetable_list= TimeTable.objects.all()
 	'''
-<<<<<<< HEAD
+
 
 def home(request):
 		t = loader.get_template('mobile/home.html')
@@ -109,7 +109,8 @@ def faculty_options(request):
 		c = Context(dict())
 		return HttpResponse(t.render(c))
 #Lady
-=======
+
+
 #Ansah's Views
 
 def emergency_list(request):
@@ -153,5 +154,3 @@ def picture_search(request, term):
     t = loader.get_template('mobile/picturesearch.html')
     c = Context({'picture_list':picture_list,'term':term})
     return HttpResponse(t.render(c))
-
->>>>>>> 38c97df27dad85e1daa872c68a2055ed07903cd2
