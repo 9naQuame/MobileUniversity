@@ -73,7 +73,7 @@ class EmergencyAdmin(admin.ModelAdmin):
 
 class Calendar(models.Model):
 	datetime = models.DateTimeField()
-	year = IntegerField()
+	year = models.IntegerField()
 	event = models.TextField()
 	semester = models.IntegerField()
 	def __unicode__(self):
