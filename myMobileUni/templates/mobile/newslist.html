@@ -1,8 +1,7 @@
-{% for announcement in announcement_list %}
+{% for news in news_list %}
 <h2><a href="/mobile/newsdetail/{{ news.id }}">{{ news.title }}</a></h2>
 <ul>
-<div>Created: {{ news.created }}</div>
-<div>Last updated: {{ news.updated }}</div>
+<div>{{ news.author }}</div>
 <div>{{ news.body|linebreaks }}</div>
 </ul>
 {% endfor %}
