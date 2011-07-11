@@ -43,10 +43,14 @@ class EventForm(ModelForm):
 		model = Event
 		exclude = ['eventtype','approval']
 
+@csrf_exempt
 def add_event(request):
 	if request.method == 'POST':
-		form = EventForm(request.POST)
-		return HttpResponseRedirect('mobile/eventlist')
+		event = Event(eventtype = 'Unofficial')
+		form = EventForm(request.POST,instance=event)
+		if form.is_valid():
+			form.save()
+		return HttpResponseRedirect('/mobile/eventlist')
 	else:
 		form = EventForm()
 	t = loader.get_template('mobile/eventadd.html')
