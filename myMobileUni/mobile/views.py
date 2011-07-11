@@ -47,7 +47,6 @@ def add_event(request):
 	if request.method == 'POST':
 		form = EventForm(request.POST)
 		return HttpResponseRedirect('mobile/eventlist')
-
 	else:
 		form = EventForm()
 	t = loader.get_template('mobile/eventadd.html')
