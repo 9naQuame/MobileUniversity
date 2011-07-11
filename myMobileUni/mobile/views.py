@@ -76,7 +76,7 @@ def faculty_department(request, id, limit=100):
 
 def course_department(request, id, limit=100):
 	department_list = Department.objects.get(pk=id)
-	course_list = Course.objects.all(Department__id = id)
+	course_list = Course.objects.filter(department__id = id)
 	t = loader.get_template('mobile/course.html')
 	c = Context({'department':department_list, 'course':course_list})
 	return HttpResponse(t.render(c))
@@ -97,6 +97,9 @@ def exam_timetable(request, id, limit=100):
 	course_list = Course.objects.all(post_pk = id)
 	timetable_list= TimeTable.objects.all()
 	'''
+	t = loader.get_template('mobile/exam.html')
+	c = Context({'department':department_list, 'exams':exam_list})
+	return HttpResponse(t.render(c))
 
 
 def home(request):
