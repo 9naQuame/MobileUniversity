@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.contrib import admin
 
 class Event(models.Model):
@@ -49,7 +50,7 @@ class AnnouncementAdmin(admin.ModelAdmin):
 
 class Picture(models.Model):
 	name = models.CharField(max_length=15)
-	image = models.FileField(upload_to="images/")
+	#image = models.FileField(upload_to="images/")
 	description = models.TextField()
 	created = models.DateField(auto_now_add=True)
 	updated = models.DateField(auto_now=True)
@@ -57,7 +58,7 @@ class Picture(models.Model):
 		return self.name
 
 class PictureAdmin(admin.ModelAdmin):
-	list_display = ('name','image','description','created','updated')
+	list_display = ('name','description','created','updated')
 	search_fields = ('name',)
 
 class Emergency(models.Model):
@@ -77,7 +78,7 @@ class Calendar(models.Model):
 	event = models.TextField()
 	semester = models.IntegerField()
 	def __unicode__(self):
-		return self.event
+		return self.year
 
 class CalendarAdmin(admin.ModelAdmin):
 	list_display = ('datetime','event','year','semester')
