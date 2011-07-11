@@ -102,14 +102,14 @@ def exam_timetable(request, id, limit=100):
 	return HttpResponse(t.render(c))
 
 def home(request):
-		t = loader.get_template('mobile/home.html')
-		c = Context(dict())
-		return HttpResponse(t.render(c))
+	t = loader.get_template('mobile/home.html')
+	c = Context(dict())
+	return HttpResponse(t.render(c))
 
 def faculty_options(request):
-		t = loader.get_template('mobile/facultylist.html')
-		c = Context(dict())
-		return HttpResponse(t.render(c))
+	t = loader.get_template('mobile/facultylist.html')
+	c = Context(dict())
+	return HttpResponse(t.render(c))
 
 #Ansah's Views
 def emergency_list(request):
@@ -153,4 +153,10 @@ def picture_search(request, term):
     t = loader.get_template('mobile/picturesearch.html')
     c = Context({'picture_list':picture_list,'term':term})
     return HttpResponse(t.render(c))
+
+def calendar(request):
+	calendar = Calendar.objects.all()
+	t = loader.get_template('mobile/academicalendar.html')
+	c = Context({'calendar':calendar})
+	return HttpResponse(t.render(c))
 
