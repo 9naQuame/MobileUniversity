@@ -93,4 +93,47 @@ def exam_timetable(request, id, limit=100):
 	course_list = Course.objects.all(post_pk = id)
 	timetable_list= TimeTable.objects.all()
 	'''
-#Lady
+#Ansah's Views
+
+def emergency_list(request):
+    emergency_list = Emergency.objects.all()
+    t = loader.get_template('mobile/emergencylist.html')
+    c = Context({'emergency_list':emergency_list})
+    return HttpResponse(t.render(c))
+
+@csrf_exempt
+def emergency_detail(request, id):
+    emergency = Emergency.objects.get(pk=id)
+    t = loader.get_template('mobile/emergencydetail.html')
+    c = Context({'emergency':emergency})
+    return HttpResponse(t.render(c))
+
+def emergency_search(request, term):
+    emergency_list= Emergency.objects.filter(name__icontains=term)
+    for emergency in emergency_list:
+        print emergency.id, emergency.name
+    t = loader.get_template('mobile/emergencysearch.html')
+    c = Context({'emergency_list':emergency_list,'term':term})
+    return HttpResponse(t.render(c))
+
+def picture_list(request):
+    picture_list = Picture.objects.all()
+    t = loader.get_template('mobile/picturelist.html')
+    c = Context({'picture_list':picture_list})
+    return HttpResponse(t.render(c))
+
+@csrf_exempt
+def picture_detail(request, id):
+    picture = Picture.objects.get(pk=id)
+    t = loader.get_template('mobile/picturedetail.html')
+    c = Context({'picture':picture})
+    return HttpResponse(t.render(c))
+
+def picture_search(request, term):
+    picture_list = Picture.objects.filter(name__icontains=term)
+    for picture in picture_list:
+	print picture.id,picture.name
+    t = loader.get_template('mobile/picturesearch.html')
+    c = Context({'picture_list':picture_list,'term':term})
+    return HttpResponse(t.render(c))
+
