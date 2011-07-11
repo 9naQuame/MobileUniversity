@@ -1,8 +1,0 @@
-{% for news in news_list %}
-<a href="/mobile/newsdetail/{{ news.id }}">{{ news.title }}</a>
-<ul>
-<div>{{ news.author }}</div>
-<div>{{ news.body|linebreaks }}</div>
-</ul>
-<br />
-{% endfor %}
