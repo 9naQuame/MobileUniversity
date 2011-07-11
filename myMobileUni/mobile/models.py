@@ -58,7 +58,7 @@ class Picture(models.Model):
 
 class PictureAdmin(admin.ModelAdmin):
 	list_display = ('name','image','description','created','updated')
-	search_fields = ('name')
+	search_fields = ('name',)
 
 class Emergency(models.Model):
 	name = models.CharField(max_length=60)
@@ -68,7 +68,7 @@ class Emergency(models.Model):
 		return self.name
 
 class EmergencyAdmin(admin.ModelAdmin):
-	search_fields = ('name')
+	search_fields = ('name',)
 	list_display = ('name','number','location')
 
 class Calendar(models.Model):
@@ -81,7 +81,7 @@ class Calendar(models.Model):
 
 class CalendarAdmin(admin.ModelAdmin):
 	list_display = ('datetime','event','year','semester')
-	search_fields = ('datetime')
+	search_fields = ('datetime',)
 
 class Faculty(models.Model):
 	name = models.CharField(max_length = 60)
