@@ -1,0 +1,6 @@
+{% extends "mobile/home.html" %}
+{% block content %}
+{% for d in department %}
+	<div>{{d.name}}</div>
+{% endfor%}
+{% endblock %}

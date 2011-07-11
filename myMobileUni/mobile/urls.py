@@ -10,5 +10,6 @@ urlpatterns = patterns('',
     url(r'^faculty/', 'mobile.views.faculty_list'),
     url(r'^facultylist/', 'mobile.views.faculty_options'),
     url(r'^course/(\d+)$', 'mobile.views.course_department'),
+    url(r'^department/(\d+)$', 'mobile.views.faculty_department'),
 )
 

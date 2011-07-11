@@ -69,7 +69,7 @@ def faculty_list(request, limit=100):
 
 def faculty_department(request, id, limit=100):
 	faculty_list = Faculty.objects.get(pk=id)
-	department_list = Department.objects.all(Faculty__id=id)
+	department_list = Department.objects.filter(faculty__id=id)
 	t = loader.get_template('mobile/department.html')
 	c = Context({'faculty':faculty_list, 'department':department_list})
 	return HttpResponse(t.render(c))
