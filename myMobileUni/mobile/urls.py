@@ -7,6 +7,5 @@ urlpatterns = patterns('',
     url(r'^eventadd/$', 'mobile.views.add_event'),
     url(r'^eventdetail/(?P<id>\d+)/(\d+)?$', 'mobile.views.event_detail'),
     url(r'^announcementlist/(\d+)?$', 'mobile.views.announcement_list'),
-
 )
 

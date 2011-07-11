@@ -48,27 +48,40 @@ class AnnouncementAdmin(admin.ModelAdmin):
 	list_filter = ('created',)
 
 class Picture(models.Model):
-    name = models.CharField(max_length=15)
-    description = models.TextField()
-    created = models.DateField(auto_now_add=True)
-    updated = models.DateField(auto_now=True)
-    def __unicode__(self):
-        return self.name
+	name = models.CharField(max_length=15)
+	image = models.FileField(upload_to="images/")
+	description = models.TextField()
+	created = models.DateField(auto_now_add=True)
+	updated = models.DateField(auto_now=True)
+	def __unicode__(self):
+		return self.name
+
+class PictureAdmin(admin.ModelAdmin):
+	list_display = ('name','image','description','created','updated')
+	search_fields = ('name',)
 
 class Emergency(models.Model):
-    name = models.CharField(max_length=60)
-    number = models.IntegerField()
-    location = models.TextField()
-    def __unicode__(self):
-	return self.name
+	name = models.CharField(max_length=60)
+	number = models.IntegerField()
+	location = models.TextField()
+	def __unicode__(self):
+		return self.name
+
+class EmergencyAdmin(admin.ModelAdmin):
+	search_fields = ('name',)
+	list_display = ('name','number','location')
 
 class Calendar(models.Model):
-    datetime = models.DateTimeField()
-    event = models.TextField()
-    semester = models.IntegerField()
-    def __unicode__(self):
-	return self.event
+	datetime = models.DateTimeField()
+	year = models.IntegerField()
+	event = models.TextField()
+	semester = models.IntegerField()
+	def __unicode__(self):
+		return self.event
 
+class CalendarAdmin(admin.ModelAdmin):
+	list_display = ('datetime','event','year','semester')
+	search_fields = ('datetime',)
 
 class Faculty(models.Model):
 	name = models.CharField(max_length = 60)
@@ -76,38 +89,45 @@ class Faculty(models.Model):
 	def __unicode__(self):
 		return self.name
 
-class department(models.Model):
+class Department(models.Model):
 	name = models.CharField(max_length = 60)
 	faculty = models.ForeignKey(Faculty)
 	def __unicode__(self):
 		return self.name
 
 class Course(models.Model):
-	code = models.CharField(max_length = 10)
-	name = models.CharField(max_length = 40)
-	abbreviation = models.CharField(max_length = 10)
-	department = models.ForeignKey(department)
+	code = models.CharField(max_length = 10) #i.e. CS.157
+	name = models.CharField(max_length = 40) # Computer Organ.....
+	abbreviation = models.CharField(max_length = 10) # i.e. COA
+	lectureVenue = models.CharField(max_length = 60)#location
+	lectureDay = models.CharField(max_length = 60) # 'monday, wednesday, friday'
+	lectureStart = models.CharField(max_length = 9) #todo make this a time
+	lectureEnd = models.CharField(max_length = 9) #todo make this a time
+	semester = models.IntegerField() #only 1 or 2
+	year = models.IntegerField()#length of exactly 4
+
+	department = models.ForeignKey(Department)
 	def __unicode__(self):
 		return self.name
 
-class Timetable(models.Model):
+class Exam(models.Model):
 	examVenue = models.CharField(max_length = 10)
-	examTime = models.DateField()
-	lectureVenue = models.CharField(max_length = 10)
-	lectureTime = models.DateField()
-	semester = models.IntegerField()
-	year = models.IntegerField()
-	code = models.ForeignKey(Course)
+	examDate= models.DateField()
+	examStart=models.TimeField()
+	examEnd = models.TimeField()
+	
+	# course = models.ForeignKey(Course) # todo decide if you need a course details page
+	department = models.ForeignKey(Department)
 	def __unicode__(self):
 		return self.code
 
-admin.site.register(Picture)
-admin.site.register(Emergency)
-admin.site.register(Calendar)
+admin.site.register(Picture,PictureAdmin)
+admin.site.register(Emergency,EmergencyAdmin)
+admin.site.register(Calendar,CalendarAdmin)
 admin.site.register(Course)
-admin.site.register(Timetable)
+admin.site.register(Exam)
 admin.site.register(Faculty)
-admin.site.register(department)
+admin.site.register(Department)
 admin.site.register(Announcement,AnnouncementAdmin)
 admin.site.register(New,NewAdmin)
 admin.site.register(Event,EventAdmin)
