@@ -56,24 +56,24 @@ def add_event(request):
 #Lady-Asaph
 #faculty list
 def faculty_list(request, limit=100):
-	'''faculty_list = Faculty.objects.all()
-	t = loader.get_template('mobile/facultylist.html')
+	faculty_list = Faculty.objects.all()
+	print faculty_list
+	t = loader.get_template('mobile/faculty.html')
 	c = Context({'faculty':faculty_list})
-	return HttpResponse(t.render(c))'''
-	return HttpResponse('going to give a list')
+	return HttpResponse(t.render(c))
 
 
 def faculty_department(request, id, limit=100):
 	faculty_list = Faculty.objects.get(pk=id)
 	department_list = Department.objects.all(Faculty__id=id)
-	t = loader.get_template('mobile/departmentlist.html')
+	t = loader.get_template('mobile/department.html')
 	c = Context({'faculty':faculty_list, 'department':department_list})
 	return HttpResponse(t.render(c))
 
 def course_department(request, id, limit=100):
 	department_list = Department.objects.get(pk=id)
 	course_list = Course.objects.all(Department__id = id)
-	t = loader.get_template('mobile/courselist.html')
+	t = loader.get_template('mobile/course.html')
 	c = Context({'department':department_list, 'course':course_list})
 	return HttpResponse(t.render(c))
 
@@ -93,4 +93,14 @@ def exam_timetable(request, id, limit=100):
 	course_list = Course.objects.all(post_pk = id)
 	timetable_list= TimeTable.objects.all()
 	'''
+
+def home(request):
+		t = loader.get_template('mobile/home.html')
+		c = Context(dict())
+		return HttpResponse(t.render(c))
+
+def faculty_options(request):
+		t = loader.get_template('mobile/facultylist.html')
+		c = Context(dict())
+		return HttpResponse(t.render(c))
 #Lady
