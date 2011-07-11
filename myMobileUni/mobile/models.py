@@ -50,7 +50,7 @@ class AnnouncementAdmin(admin.ModelAdmin):
 
 class Picture(models.Model):
 	name = models.CharField(max_length=15)
-	#image = models.FileField(upload_to="images/")
+	image = models.FileField(upload_to="static")
 	description = models.TextField()
 	created = models.DateField(auto_now_add=True)
 	updated = models.DateField(auto_now=True)
