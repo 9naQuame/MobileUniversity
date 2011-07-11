@@ -79,10 +79,12 @@ class Calendar(models.Model):
 	def __unicode__(self):
 		return self.event
 
+
 class CalendarAdmin(admin.ModelAdmin):
 	list_display = ('datetime','event','year','semester')
 	search_fields = ('datetime',)
 
+#Lady
 class Faculty(models.Model):
 	name = models.CharField(max_length = 60)
 	yearCreated = models.IntegerField()
@@ -120,6 +122,8 @@ class Exam(models.Model):
 	department = models.ForeignKey(Department)
 	def __unicode__(self):
 		return self.code
+
+#lady
 
 admin.site.register(Picture,PictureAdmin)
 admin.site.register(Emergency,EmergencyAdmin)
