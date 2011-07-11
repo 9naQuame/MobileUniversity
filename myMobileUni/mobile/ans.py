@@ -43,14 +43,10 @@ class EventForm(ModelForm):
 		model = Event
 		exclude = ['eventtype','approval']
 
-@csrf_exempt
 def add_event(request):
 	if request.method == 'POST':
-		event = Event(eventtype = 'Unofficial')
-		form = EventForm(request.POST,instance=event)
-		if form.is_valid():
-			form.save()
-		return HttpResponseRedirect('/mobile/eventlist')
+		form = EventForm(request.POST)
+		return HttpResponseRedirect('mobile/eventlist')
 	else:
 		form = EventForm()
 	t = loader.get_template('mobile/eventadd.html')
@@ -60,24 +56,24 @@ def add_event(request):
 #Lady-Asaph
 #faculty list
 def faculty_list(request, limit=100):
-	faculty_list = Faculty.objects.all()
-	print faculty_list
-	t = loader.get_template('mobile/faculty.html')
+	'''faculty_list = Faculty.objects.all()
+	t = loader.get_template('mobile/facultylist.html')
 	c = Context({'faculty':faculty_list})
-	return HttpResponse(t.render(c))
+	return HttpResponse(t.render(c))'''
+	return HttpResponse('going to give a list')
 
 
 def faculty_department(request, id, limit=100):
 	faculty_list = Faculty.objects.get(pk=id)
 	department_list = Department.objects.all(Faculty__id=id)
-	t = loader.get_template('mobile/department.html')
+	t = loader.get_template('mobile/departmentlist.html')
 	c = Context({'faculty':faculty_list, 'department':department_list})
 	return HttpResponse(t.render(c))
 
 def course_department(request, id, limit=100):
 	department_list = Department.objects.get(pk=id)
-	course_list = Course.objects.filter(department__id = id)
-	t = loader.get_template('mobile/course.html')
+	course_list = Course.objects.all(Department__id = id)
+	t = loader.get_template('mobile/courselist.html')
 	c = Context({'department':department_list, 'course':course_list})
 	return HttpResponse(t.render(c))
 
@@ -97,66 +93,54 @@ def exam_timetable(request, id, limit=100):
 	course_list = Course.objects.all(post_pk = id)
 	timetable_list= TimeTable.objects.all()
 	'''
-	t = loader.get_template('mobile/exam.html')
-	c = Context({'department':department_list, 'exams':exam_list})
-	return HttpResponse(t.render(c))
-
-def home(request):
-	t = loader.get_template('mobile/home.html')
-	c = Context(dict())
-	return HttpResponse(t.render(c))
-
-def faculty_options(request):
-	t = loader.get_template('mobile/facultylist.html')
-	c = Context(dict())
-	return HttpResponse(t.render(c))
-
 #Ansah's Views
+
 def emergency_list(request):
-    emergency_list = Emergency.objects.all()
-    t = loader.get_template('mobile/emergencylist.html')
-    c = Context({'emergency_list':emergency_list})
-    return HttpResponse(t.render(c))
+        emergency_list = Emergency.objects.all()
+        t = loader.get_template('mobile/emergencylist.html')
+        c = Context({'emergency_list':emergency_list})
+        return HttpResponse(t.render(c))
 
 @csrf_exempt
 def emergency_detail(request, id):
-    emergency = Emergency.objects.get(pk=id)
-    t = loader.get_template('mobile/emergencydetail.html')
-    c = Context({'emergency':emergency})
-    return HttpResponse(t.render(c))
+        emergency = Emergency.objects.get(id=id)
+        t = loader.get_template('mobile/emergencydetail.html')
+        c = Context({'emergency':emergency})
+        return HttpResponse(t.render(c))
 
 def emergency_search(request, term):
-    emergency_list= Emergency.objects.filter(name__icontains=term)
-    for emergency in emergency_list:
-        print emergency.id, emergency.name
-    t = loader.get_template('mobile/emergencysearch.html')
-    c = Context({'emergency_list':emergency_list,'term':term})
-    return HttpResponse(t.render(c))
+        emergency_list= Emergency.objects.filter(name__icontains=term)
+        for emergency in emergency_list:
+                print emergency.id, emergency.name
+        t = loader.get_template('mobile/emergencysearch.html')
+        c = Context({'emergency_list':emergency_list,'term':term})
+        return HttpResponse(t.render(c))
 
 def picture_list(request):
-    picture_list = Picture.objects.all()
-    t = loader.get_template('mobile/picturelist.html')
-    c = Context({'picture_list':picture_list})
-    return HttpResponse(t.render(c))
+        picture_list = Picture.objects.all()
+        t = loader.get_template('mobile/picturelist.html')
+        c = Context({'picture_list':picture_list})
+        return HttpResponse(t.render(c))
 
 @csrf_exempt
 def picture_detail(request, id):
-    picture = Picture.objects.get(pk=id)
-    t = loader.get_template('mobile/picturedetail.html')
-    c = Context({'picture':picture})
-    return HttpResponse(t.render(c))
+        picture = Picture.objects.get(pk=id)
+        t = loader.get_template('mobile/picturedetail.html')
+        c = Context({'picture':picture})
+        return HttpResponse(t.render(c))
 
 def picture_search(request, term):
-    picture_list = Picture.objects.filter(name__icontains=term)
-    for picture in picture_list:
-	print picture.id,picture.name
-    t = loader.get_template('mobile/picturesearch.html')
-    c = Context({'picture_list':picture_list,'term':term})
-    return HttpResponse(t.render(c))
+        picture_list = Picture.objects.filter(name__icontains=term)
+        for picture in picture_list:
+        	print picture.id,picture.name
+        t = loader.get_template('mobile/picturesearch.html')
+        c = Context({'picture_list':picture_list,'term':term})
+        return HttpResponse(t.render(c))
 
 def calendar(request):
 	calendar = Calendar.objects.all()
 	t = loader.get_template('mobile/academicalendar.html')
 	c = Context({'calendar':calendar})
 	return HttpResponse(t.render(c))
+
 

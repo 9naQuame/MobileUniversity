@@ -50,12 +50,14 @@ class AnnouncementAdmin(admin.ModelAdmin):
 
 class Picture(models.Model):
 	name = models.CharField(max_length=15)
-	image = models.FileField(upload_to="static")
+	imagepic = models.ImageField(upload_to="static")
 	description = models.TextField()
 	created = models.DateField(auto_now_add=True)
 	updated = models.DateField(auto_now=True)
 	def __unicode__(self):
 		return self.name
+	def render_image(self):
+		return self.imagepic.url
 
 class PictureAdmin(admin.ModelAdmin):
 	list_display = ('name','description','created','updated')

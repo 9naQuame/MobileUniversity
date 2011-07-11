@@ -1,4 +1,6 @@
 {% for picture in picture_list %}
-    <a href="/mobile/picturedetail/{{ picture.id }}">{{ picture.name}}</a>
-    <div>
+   <div> <img src="/{{ picture.render_image }}/" /></div>
+{{ picture.description }}
+
+    
 {% endfor %}
