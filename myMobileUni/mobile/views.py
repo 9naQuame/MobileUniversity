@@ -101,7 +101,6 @@ def exam_timetable(request, id, limit=100):
 	c = Context({'department':department_list, 'exams':exam_list})
 	return HttpResponse(t.render(c))
 
-
 def home(request):
 		t = loader.get_template('mobile/home.html')
 		c = Context(dict())
@@ -111,11 +110,8 @@ def faculty_options(request):
 		t = loader.get_template('mobile/facultylist.html')
 		c = Context(dict())
 		return HttpResponse(t.render(c))
-#Lady
-
 
 #Ansah's Views
-
 def emergency_list(request):
     emergency_list = Emergency.objects.all()
     t = loader.get_template('mobile/emergencylist.html')
@@ -157,3 +153,4 @@ def picture_search(request, term):
     t = loader.get_template('mobile/picturesearch.html')
     c = Context({'picture_list':picture_list,'term':term})
     return HttpResponse(t.render(c))
+
