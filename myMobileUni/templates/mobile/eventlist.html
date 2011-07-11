@@ -1,0 +1,7 @@
+{% for event in event_list %}
+<a href="/mobile/eventdetail/{{ event.id }}">{{ event.title }}</a>
+<div>{{ event.organisers }}</div>
+<div>{{ event.body }}</div>
+</ul>
+<br />
+{% endfor %}
