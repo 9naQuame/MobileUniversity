@@ -1,0 +1,7 @@
+{% extends "mobile/home.html" %}
+{% block content %}
+{{exams.department.name}}
+{% for e in exams %}
+	 <div>{{e.lectureVenue}}, {{e.department.name}}, {{e.course.name}}</div>
+{% endfor%}
+{% endblock %}

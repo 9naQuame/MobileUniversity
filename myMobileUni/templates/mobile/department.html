@@ -2,6 +2,6 @@
 {% block content %}
 {{faculty.name}}
 {% for d in department %}
-	 <a href="/mobile/facultylist/"><div>{{d.name}}</div>
-{% endfor%}
+<a href="/mobile/departmentlist/{{d.id}}"><div>{{d.name}}</div>
+{% endfor %}
 {% endblock %}

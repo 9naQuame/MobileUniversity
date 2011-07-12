@@ -1,8 +1,10 @@
 {% extends "mobile/home.html" %}
 {% block content %}
-{{department.name}}
+{{c.department.name}}
 {% for c in course %}
-<a href="/mobile/coursedetial"><div>c.code c.name<div></a><br>
+<div>{{c.code}} {{c.name}}<a href="/mobile/coursedetial/{{c.id}}">view details</a><div>
+{{c.id}}
+<br>
 {% endfor %}
 {% endblock %}
 

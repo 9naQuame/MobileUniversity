@@ -117,10 +117,10 @@ class Exam(models.Model):
 	examStart=models.TimeField()
 	examEnd = models.TimeField()
 	
-	# course = models.ForeignKey(Course) # todo decide if you need a course details page
+	course = models.ForeignKey(Course) # todo decide if you need a course details page
 	department = models.ForeignKey(Department)
 	def __unicode__(self):
-		return self.code
+		return self.course.name
 
 admin.site.register(Picture,PictureAdmin)
 admin.site.register(Emergency,EmergencyAdmin)

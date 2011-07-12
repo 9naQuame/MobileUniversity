@@ -69,7 +69,7 @@ def faculty_list(request, limit=100):
 
 def faculty_department(request, id, limit=100):
 	faculty_list = Faculty.objects.get(pk=id)
-	department_list = Department.objects.all(Faculty__id=id)
+	department_list = Department.objects.filter(faculty__id=id)
 	t = loader.get_template('mobile/department.html')
 	c = Context({'faculty':faculty_list, 'department':department_list})
 	return HttpResponse(t.render(c))
@@ -79,6 +79,20 @@ def course_department(request, id, limit=100):
 	course_list = Course.objects.filter(department__id = id)
 	t = loader.get_template('mobile/course.html')
 	c = Context({'department':department_list, 'course':course_list})
+	return HttpResponse(t.render(c))
+
+def classschedule(request, id, limit=100):
+	department_list = Department.objects.get(pk=id)
+	course_list = Course.objects.filter(department__id = id)
+	t = loader.get_template('mobile/classschedule.html')
+	c = Context({'department':department_list, 'course':course_list})
+	return HttpResponse(t.render(c))
+
+def coursedetial(request, id, limit = 100):
+	course_list = Course.objects.filter(pk = id)
+	t = loader.get_template('mobile/classschedule.html')
+	c = Context({'course':course_list})
+	print course_list
 	return HttpResponse(t.render(c))
 
 def exam_timetable(request, id, limit=100):
@@ -98,7 +112,7 @@ def exam_timetable(request, id, limit=100):
 	timetable_list= TimeTable.objects.all()
 	'''
 	t = loader.get_template('mobile/exam.html')
-	c = Context({'department':department_list, 'exams':exam_list})
+	c = Context({'exams':exam_list})
 	return HttpResponse(t.render(c))
 
 def home(request):
@@ -106,10 +120,11 @@ def home(request):
 	c = Context(dict())
 	return HttpResponse(t.render(c))
 
-def faculty_options(request):
-	t = loader.get_template('mobile/facultylist.html')
-	c = Context(dict())
+def faculty_options(request, id):
+	t = loader.get_template('mobile/departmentlist.html')
+	c = Context({'id':id})
 	return HttpResponse(t.render(c))
+	
 
 #Ansah's Views
 def emergency_list(request):

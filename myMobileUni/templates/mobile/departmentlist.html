@@ -1,8 +1,7 @@
 {% extends "mobile/home.html" %}
-
 {% block content %}
 {{faculty.name}}
-<a href="/mobile/course/"><div>courses<div></a><br>
-<a href="/mobile/exams"><div>Exams Timetable<div></a><br>
-<a href="/mobile/ "><div>Lecture  timetable<div></a><br>
+<a href="/mobile/course/{{id}}"><div>courses<div></a><br>
+<a href="/mobile/exam/{{id}}"><div>Exams Timetable<div></a><br>
+<a href="/mobile/classschedule/{{id}}"><div>Lecture  timetable<div></a><br>
 {% endblock %}
