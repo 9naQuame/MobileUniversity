@@ -60,12 +60,12 @@ class Picture(models.Model):
 		return self.imagepic.url
 
 class PictureAdmin(admin.ModelAdmin):
-	list_display = ('name','description','created','updated')
+	list_display = ('name','description','imagepic','created','updated')
 	search_fields = ('name',)
 
 class Emergency(models.Model):
 	name = models.CharField(max_length=60)
-	number = models.IntegerField()
+	number = models.CharField(max_length=30)
 	location = models.TextField()
 	def __unicode__(self):
 		return self.name
