@@ -50,12 +50,14 @@ class AnnouncementAdmin(admin.ModelAdmin):
 
 class Picture(models.Model):
 	name = models.CharField(max_length=15)
-	image = models.FileField(upload_to="static")
+	imagepic = models.ImageField(upload_to="static")
 	description = models.TextField()
 	created = models.DateField(auto_now_add=True)
 	updated = models.DateField(auto_now=True)
 	def __unicode__(self):
 		return self.name
+	def render_image(self):
+		return self.imagepic.url
 
 class PictureAdmin(admin.ModelAdmin):
 	list_display = ('name','description','created','updated')
@@ -102,7 +104,7 @@ class Course(models.Model):
 	abbreviation = models.CharField(max_length = 10) # i.e. COA
 	lectureVenue = models.CharField(max_length = 60)#location
 	lectureDay = models.CharField(max_length = 60) # 'monday, wednesday, friday'
-	lectureStart = models.CharField(max_length = 9) #todo make this a time
+	lectureStart = models.CharField(max_length = 9) #todo make this faculty/a time
 	lectureEnd = models.CharField(max_length = 9) #todo make this a time
 	semester = models.IntegerField() #only 1 or 2
 	year = models.IntegerField()#length of exactly 4
