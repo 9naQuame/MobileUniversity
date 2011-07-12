@@ -75,16 +75,26 @@ class EmergencyAdmin(admin.ModelAdmin):
 	list_display = ('name','number','location')
 
 class Calendar(models.Model):
-	datetime = models.DateTimeField()
-	year = models.IntegerField()
-	event = models.TextField()
-	semester = models.IntegerField()
+	yearfrom = models.IntegerField()
+	yearto = models.IntegerField()
+	semester = models.CharField(max_length=6)
 	def __unicode__(self):
-		return self.year
+		return self.semester
+
+class CalendarEvent(models.Model):
+	date = models.DateField()
+	event = models.CharField(max_length=150)
+	post = models.ForeignKey(Calendar)
+	def __unicode__(self):
+		return self.date
+
+class CalendarEventInline(admin.TabularInline):
+	model = CalendarEvent
 
 class CalendarAdmin(admin.ModelAdmin):
-	list_display = ('datetime','event','year','semester')
-	search_fields = ('datetime',)
+	list_display = ('yearfrom','yearto','semester')
+	search_fields = ('semester',)
+	inlines = [CalendarEventInline]
 
 class Faculty(models.Model):
 	name = models.CharField(max_length = 60)
