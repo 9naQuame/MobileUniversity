@@ -1,7 +1,9 @@
 {% extends "mobile/home.html" %}
 {% block content %}
+
 {{exams.department.name}}
 {% for e in exams %}
-	 <div>{{e.lectureVenue}}, {{e.department.name}}, {{e.course.name}}</div>
+	 <div>{{e.course.name}} on {{e.examDay}}</br>
+         At {{e.examVenue}} from  {{e.examStart}} to {{e.examEnd}}</div>
 {% endfor%}
 {% endblock %}
