@@ -1,7 +1,17 @@
 {% extends "mobile/home.html" %}
 {% block content %}
+<html>
+<head>
+<style type="text/css">
+body
+{
+background-color:#b0c4de;
+}
+</style>
+</head>
 
-<div><h4>Announcements</h4></div>
+
+<div><h3>Announcements</h3></div>
 {% for announcement in announcement_list %}
 <div>{{ announcement.title }}</div>
 <div>{{ announcement.body }}</div>

@@ -1,14 +1,24 @@
 {% extends "mobile/home.html" %}
 {% block content %}
+<html>
+<head>
+<style type="text/css">
+body
+{
+background-color:#b0c4de;
+}
+</style>
+</head>
 
-<div><h4>Events</h4></div>
+<div><h3>Events >> </a><a href="/mobile/eventadd/">Add Event</a> </h3></div>
 {% for event in event_list reversed %}
-<a href="/mobile/eventdetail/{{ event.id }}"><div>{{ event.title }} >>
+<a href="/mobile/eventdetail/{{ event.id }}"><div>{{ event.title }} >> 
+
 {{ event.body_50 }}...</div>
 <div>Date / Time: {{ event.date }} / {{ event.time }}</div>
 <div>Venue: {{ event.venue }}</div>
 </a>
 <br />
-{% endfor %}  
+{% endfor %}
 
 {% endblock %}
