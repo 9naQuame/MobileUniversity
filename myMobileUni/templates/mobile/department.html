@@ -3,7 +3,7 @@
 <a href="/mobile/">Home >> </a> <a href="/mobile/faculty">Faculty>></a> <a href="/mobile/department/faculty.id">{{faculty.name}}</a>
 {% endblock %}
 {% block content %}
-{{faculty.name}}
+<h4>{{faculty.name}}<h4>
 {% for d in department %}
 <a href="/mobile/departmentlist/{{d.id}}"><div>{{d.name}}</div>
 {% endfor %}
