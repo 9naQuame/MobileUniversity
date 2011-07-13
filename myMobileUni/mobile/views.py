@@ -3,7 +3,9 @@ from django.http import HttpResponse, HttpResponseRedirect
 from models import New, Event, Announcement, Faculty, Department,Course, Exam, Emergency, Picture, Calendar
 from django import forms
 from django.forms import ModelForm
+from django.forms.extras.widgets import SelectDateWidget
 from django.views.decorators.csrf import csrf_exempt
+
 
 def news_list(request, limit=60):
 	news_list = New.objects.all()
@@ -39,14 +41,16 @@ class SearchForm(forms.Form):
 	search = forms.CharField()
 
 class EventForm(ModelForm):
+	date = forms.DateField(widget=SelectDateWidget())
+	#time = forms.TimeField(widget=SelectTimeWidget())
 	class Meta:
 		model = Event
-		exclude = ['eventtype','approval']
+		exclude = ['eventtype','status']
 
 @csrf_exempt
 def add_event(request):
 	if request.method == 'POST':
-		event = Event(eventtype = 'Unofficial')
+		event = Event(eventtype = 'Unofficial', status ='Holds')
 		form = EventForm(request.POST,instance=event)
 		if form.is_valid():
 			form.save()

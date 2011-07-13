@@ -1,8 +1,10 @@
-{% for news in news_list %}
+{% extends "mobile/home.html" %}
+{% block content %}
+
+{% for news in news_list reversed %}
 <a href="/mobile/newsdetail/{{ news.id }}">{{ news.title }}</a>
-<ul>
-<div>{{ news.author }}</div>
-<div>{{ news.body|linebreaks }}</div>
-</ul>
+<div>{{ news.body_50 }} ...</div>
 <br />
 {% endfor %}
+
+{% endblock %}
