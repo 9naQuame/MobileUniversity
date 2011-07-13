@@ -175,7 +175,7 @@ def picture_search(request, term):
 
 def calendar(request):
 	calendar = Calendar.objects.all()
-	t = loader.get_template('mobile/academicalendar.html')
+	t = loader.get_template('mobile/academiccalendar.html')
 	c = Context({'calendar':calendar})
 	return HttpResponse(t.render(c))
 

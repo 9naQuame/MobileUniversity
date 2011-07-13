@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<link rel="stylesheet" type="text/css" href="/static/lady.css" />
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <title>Mobile University</title>
 </head>
-<body>
-{% block content %}
-<a href="/mobile/faculty/">Faculties</a>
-
+<body width = 100%>
+<h2>
+University of <span>Ghana</span>
+</h2>
+<h1>integri procedamus</h1>
+{% block breadcrumps %}
+<h3><a href="/mobile/">Home</a></h3>
 {% endblock %}
-</div>
+{% block content %}
+<h3><a href="/mobile/faculty/">Faculties</a></h3>
+<h3><a>News</a></h3>
+<h3><a>Announcements</a></h3>
+<h3><a>maps</a></h3>
+<h3><a>timetable</a></h3>
+<h3><a>events</a></h3>
+{% endblock %}
+<div id="footer"> &copy; 2011 UG Limited </div>
 </body>
 </html>
+
+
+
 

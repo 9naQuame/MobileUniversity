@@ -1,0 +1,116 @@
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend {
+    border: 0 none;
+    font-family: inherit;
+    font-size: 100%;
+    font-style: inherit;
+    font-weight: inherit;
+    margin: 0;
+    outline: 0 none;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+body {
+    background: url("http://www.webdesign.photoshopbook.net/iphone/images/body-bg.png") repeat-y scroll center top #83A1C8;
+    color: rgba(0, 0, 0, 0.75);
+    font: 14px/24px sans-serif;
+    margin: 0 auto;
+    min-height: 416px;
+    text-align: left;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
+    width: 100%;
+}
+
+
+body {
+    background: none repeat scroll 0 0 white;
+    color: black;
+    line-height: 1;
+}
+
+h1 {
+    background: url("images/header-bg.png") no-repeat scroll left -48px #F6A90C;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: bold;
+    height: 18px;
+    line-height: 12px;
+    padding-top: 7px;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);  
+    margin: 0;
+    outline: 0 none;
+}
+
+h2 span {
+    font-weight: bold;
+}
+
+h2 {
+    background: url("images/header-bg.png") no-repeat scroll left top #4B6485;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 22px;
+    height: 50px;
+    line-height: 48px;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;  
+    margin: 0;
+    outline: 0 none; 
+}
+
+h3 {
+    background: url("images/expand-bg.png") no-repeat scroll left top #C7CACF;
+    color: #3E4A59;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 32px;
+    text-transform: uppercase;
+    border-style:solid;
+    border-width:0.05px;
+    border-color:#E0E0E0 ;
+    margin: 0;
+    outline: 0 none;
+}
+
+h3 a {
+    color: rgba(23, 63, 115, 0.95);
+    text-decoration: none;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+#footer {
+    background: url("images/footer-bg.png") no-repeat scroll left -48px #4B6485;
+    bottom: 0;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 12px;
+    height: 48px;
+    line-height: 48px;
+    margin: 0;
+    padding: 0 32px;
+    text-align: left;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.75);
+    text-transform: uppercase;
+}
+
+#content {
+    min-height: 100%;
+    padding-bottom: 48px;
+    position: relative;
+}
+
+#breadcrumbs {
+    color: #3E4A59;
+    cursor: pointer;
+    font-size: 12px;
+    height: 48px;
+    line-height: 26px;
+    padding: 0 32px;
+    text-transform: uppercase;
+    border-style:solid;
+    border-width:0.5px;
+}
+

@@ -1,4 +1,7 @@
 {% extends "mobile/home.html" %}
+{% block breadcrumps %}
+<a href="/mobile/">Home >> </a> <a href="/mobile/faculty">Faculty >> </a> <a href="/mobile/department">{{faculty.name}}</a>
+{% endblock %}
 {% block content %}
 {{faculty.name}}
 <a href="/mobile/course/{{id}}"><div>courses<div></a><br>
