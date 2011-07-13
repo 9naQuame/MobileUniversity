@@ -1,9 +1,18 @@
-<div>{{events.title}}</div>
-<div>{{events.organisers}}</div>
-<div>{{events.venue}}</div>
-<div>{{events.date}}</div>
-<div>{{events.time}}</div>
-<div>{{events.rate}}</div>
-<br />
+{% extends "mobile/home.html" %}
+{% block content %}
+
+<div><h2> {{events.title}} </h2></div>
 <div>{{events.body}}</div>
+<br />
+<div>Organizers: {{events.organisers}}</div>
+<div>Venue: {{events.venue}}</div>
+<div>Date: {{events.date}}</div>
+<div>Time: {{events.time}}</div>
+<div>Rate: {{events.rate}}</div>
+<div>Status: {{events.status}}</div>
+<div>Event Type: {{events.eventtype}}</div>
+
+{% endblock %}
+
+
 

@@ -1,7 +1,11 @@
-<div>{{news.title}}</div>
-<div>{{news.author}}</div>
-<div>{{news.created}}</div>
-<div>{{news.updated}}</div>
+{% extends "mobile/home.html" %}
+{% block content %}
+
+<div><h2>{{news.title}}</h2></div>
+<div>Author: {{news.author}}</div>
+<div>Date Published: {{news.created}}</div>
 <br />
 <div>{{news.body}}</div>
+
+{% endblock %}
 

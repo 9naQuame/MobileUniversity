@@ -10,28 +10,40 @@ class Event(models.Model):
 	date = models.DateField()
 	rate = models.DecimalField(max_digits=10, decimal_places=2)
 	organisers = models.CharField(max_length=20)
-	approval = models.CharField(max_length=10)
-	eventtype = models.CharField(max_length=10)
-	status = models.CharField(max_length=10)
+	EVENTTYPE_CHOICES = (
+        	('Official', 'Official'),
+        	('Unofficial', 'Unofficial'),
+    	)
+	eventtype = models.CharField(max_length=10, choices=EVENTTYPE_CHOICES)
+	STATUS_CHOICES = (
+        	('Holds', 'Holds'),
+        	('Postponed', 'Postponed'),
+		('Cancelled', 'Cancelled'),
+    	)
+	status = models.CharField(max_length=10, choices=STATUS_CHOICES)
+	def body_50(self):
+		return self.body[:50]
 	def __unicode__(self):
 		return self.title
 
 class EventAdmin(admin.ModelAdmin):
-	list_display = ('title','organisers','venue','date','time')
+	list_display = ('title','organisers','body_50','venue','date','time')
 	search_fields = ('title','body')
 	list_filter = ('date',)
 
 class New(models.Model):
-	title = models.CharField(max_length=100)
+	title = models.CharField(max_length=160)
 	body = models.TextField()
 	created = models.DateField(auto_now_add=True)
 	updated = models.DateField(auto_now=True)
 	author = models.CharField(max_length=50)
+	def body_50(self):
+		return self.body[:50]
 	def __unicode__(self):
 		return self.title
 
 class NewAdmin(admin.ModelAdmin):
-	list_display = ('title','created','updated')
+	list_display = ('title','body_50','created','updated')
 	search_fields = ('title','body')
 	list_filter = ('created',)
 

@@ -1,7 +1,13 @@
-{% for event in event_list %}
-<a href="/mobile/eventdetail/{{ event.id }}">{{ event.title }}</a>
-<div>{{ event.organisers }}</div>
-<div>{{ event.body }}</div>
-</ul>
+{% extends "mobile/home.html" %}
+{% block content %}
+
+{% for event in event_list reversed %}
+<a href="/mobile/eventdetail/{{ event.id }}"><div>{{ event.title }} >>
+{{ event.body_50 }}...</div>
+<div>Date / Time: {{ event.date }} / {{ event.time }}</div>
+<div>Venue: {{ event.venue }}</div>
+</a>
 <br />
-{% endfor %}
+{% endfor %}  
+
+{% endblock %}
