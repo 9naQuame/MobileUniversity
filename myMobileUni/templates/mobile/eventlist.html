@@ -1,6 +1,7 @@
 {% extends "mobile/home.html" %}
 {% block content %}
 
+<div><h4>Events</h4></div>
 {% for event in event_list reversed %}
 <a href="/mobile/eventdetail/{{ event.id }}"><div>{{ event.title }} >>
 {{ event.body_50 }}...</div>
