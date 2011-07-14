@@ -1,6 +1,6 @@
+{% extends "mobile/home.html" %}
+{% block content %}
 {% for picture in picture_list %}
-   <div> <img src="/{{ picture.render_image }}/" /></div>
-{{ picture.description }}
-
-    
+<div><a href="/mobile/picturedetail/{{ picture.id }}">{{ picture.name }}</a></div>
 {% endfor %}
+{% endblock %}

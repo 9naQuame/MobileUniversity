@@ -1,5 +1,7 @@
+{% extends "mobile/home.html" %}
+{% block content %}
 <a href= "/mobile/emergencylist"></a>
     <div>Name: {{ emergency.name }}</div>
     <div>Contact: {{ emergency.number}}</div>
     <div>Location: {{ emergency.location }}</div>
-
+{% endblock %}

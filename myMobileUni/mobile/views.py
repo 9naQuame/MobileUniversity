@@ -5,7 +5,7 @@ from django import forms
 from django.forms import ModelForm
 from django.forms.extras.widgets import SelectDateWidget
 from django.views.decorators.csrf import csrf_exempt
-
+from django.shortcuts import render_to_response
 
 def news_list(request, limit=60):
 	news_list = New.objects.all()
@@ -106,9 +106,8 @@ def exam_timetable(request, id, limit=100):
 	#exam_list = Exam.objects.filter(course__id__in=ids)
 	# --or--
 	# exam_list = Exam.objects.filter(course__department__id=id) # (not sure if this works with django-nonrel)
-
+        department_list = Department.objects.get(pk=id)
 	exam_list = Exam.objects.filter(department__id=id)
-	#print exam_list
 
 	'''
 	department = Department.objects.get(pk=id)
@@ -117,7 +116,7 @@ def exam_timetable(request, id, limit=100):
 	timetable_list= TimeTable.objects.all()
 	'''
 	t = loader.get_template('mobile/exam.html')
-	c = Context({'exams':exam_list})
+	c = Context({'department':department_list, 'exams':exam_list})
 	return HttpResponse(t.render(c))
 
 def home(request):
@@ -145,14 +144,6 @@ def emergency_detail(request, id):
     c = Context({'emergency':emergency})
     return HttpResponse(t.render(c))
 
-def emergency_search(request, term):
-    emergency_list= Emergency.objects.filter(name__icontains=term)
-    for emergency in emergency_list:
-        print emergency.id, emergency.name
-    t = loader.get_template('mobile/emergencysearch.html')
-    c = Context({'emergency_list':emergency_list,'term':term})
-    return HttpResponse(t.render(c))
-
 def picture_list(request):
     picture_list = Picture.objects.all()
     t = loader.get_template('mobile/picturelist.html')
@@ -166,17 +157,13 @@ def picture_detail(request, id):
     c = Context({'picture':picture})
     return HttpResponse(t.render(c))
 
-def picture_search(request, term):
-    picture_list = Picture.objects.filter(name__icontains=term)
-    for picture in picture_list:
-	print picture.id,picture.name
-    t = loader.get_template('mobile/picturesearch.html')
-    c = Context({'picture_list':picture_list,'term':term})
-    return HttpResponse(t.render(c))
-
-def calendar(request):
-	calendar = Calendar.objects.all()
-	t = loader.get_template('mobile/academiccalendar.html')
-	c = Context({'calendar':calendar})
+def calendar_list(request):
+	calendar_list = Calendar.objects.all()
+	t = loader.get_template('mobile/calendarlist.html')
+	c = Context({'calendar_list':calendar_list})
 	return HttpResponse(t.render(c))
+
+def calendar_detail(request,semester):
+	events = Calendar.objects.filter(semester = semester)
+	return render_to_response('mobile/calendardetail.html',{'events':events})
 

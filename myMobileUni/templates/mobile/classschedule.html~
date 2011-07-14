@@ -1,10 +1,10 @@
 {% extends "mobile/home.html" %}
 {% block content %}
- <h3>{{department.name}}</h3>
+ <h3>{{course.department.name}}</h3>
 {% for c in course %}
-	<h5><div><h4><a>{{c.code}}, {{c.name}}  </a></h4></div>
+	<h3><div><h4><a>{{c.code}}, {{c.name}}  </a></h4></div>
 	<div><h4>On {{c.lectureDay }} at {{c.lectureVenue }}</h4></div>
-	<div><h4> From {{c.lectureStart}} to {{c.lectureEnd}}</h4></div></h5>
+	<div><h4> From {{c.lectureStart}} to {{c.lectureEnd}}</h4></div></h3>
 {% endfor%}
 {% endblock %}
 

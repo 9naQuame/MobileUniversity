@@ -22,14 +22,7 @@ body {
     width: 100%;
 }
 
-label {
 
-display: block;
-}
-
-.eventBody {
-	width: 205px;
-}	
 body {
     background: none repeat scroll 0 0 white;
     color: black;
@@ -127,6 +120,8 @@ h5 {
     cursor: pointer;
     font-size: 14px;
     font-weight: bold;
+    height: 70px;
+    line-height: 70px;
     padding: 0 32px;
     text-transform: uppercase;
     border-style:solid;

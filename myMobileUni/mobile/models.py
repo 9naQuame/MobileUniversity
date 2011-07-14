@@ -87,16 +87,16 @@ class EmergencyAdmin(admin.ModelAdmin):
 	list_display = ('name','number','location')
 
 class Calendar(models.Model):
+	date =models.DateField()
+	year = models.IntegerField()
 	semester = models.IntegerField()
-	filename = models.FileField(upload_to="static")
+	event = models.CharField(max_length=200)
 	def __unicode__(self):
-		return self.semester
-	def render_file(self):
-		return self.filename.url
+		return str(self.date)
 
 class CalendarAdmin(admin.ModelAdmin):
-	list_display = ('semester','filename')
-	search_fields = ('semester',)
+	list_display = ('date','semester','year','event')
+	search_fields = ('semester','date')
 
 class Faculty(models.Model):
 	name = models.CharField(max_length = 60)
@@ -116,10 +116,13 @@ class Course(models.Model):
 	abbreviation = models.CharField(max_length = 10) # i.e. COA
 	lectureVenue = models.CharField(max_length = 60)#location
 	lectureDay = models.CharField(max_length = 60) # 'monday, wednesday, friday'
-	lectureStart = models.CharField(max_length = 9) #todo make this faculty/a time
-	lectureEnd = models.CharField(max_length = 9) #todo make this a time
-	semester = models.IntegerField() #only 1 or 2
-	year = models.IntegerField()#length of exactly 4
+	lectureStart = models.DateField() 
+	lectureEnd = models.DateField() 
+        SEMESTER_CHOICES = (
+        	('1', 'First Semester'),
+        	('2', 'Second Semester'),)
+	semester = models.CharField(max_length=10, choices=SEMESTER_CHOICES)
+	year = models.IntegerField(max_length = 4)#length of exactly 4
 
 	department = models.ForeignKey(Department)
 	def __unicode__(self):
@@ -131,7 +134,7 @@ class Exam(models.Model):
 	examStart=models.TimeField()
 	examEnd = models.TimeField()
 	
-	course = models.ForeignKey(Course) # todo decide if you need a course details page
+	course = models.ForeignKey(Course) 
 	department = models.ForeignKey(Department)
 	def __unicode__(self):
 		return self.course.name
