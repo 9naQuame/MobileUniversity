@@ -2,9 +2,9 @@
 {% block content %}
 {{exams.department.name}}
 {% for e in exams %}
-	<h3> <div>{{e.course.name}} 
-               Date: {{e.examDay}}
-               Venue: {{e.examVenue}} 
+	<h3> <div>{{e.course.name}}<br>
+               Date: {{e.examDay}}<br>
+               Venue: {{e.examVenue}} <br>
                Time:  {{e.examStart}} to {{e.examEnd}}</div></h3>
 {% endfor%}
 {% endblock %}
