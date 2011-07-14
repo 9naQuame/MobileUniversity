@@ -78,6 +78,7 @@ h3 {
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
+
 h4 a {
     font-size: 12px;
     font-weight: bold;
@@ -92,27 +93,12 @@ h4 {
     line-height: 20px;
     padding: 0 6px;
     text-transform: uppercase;
-
     margin: 0;
     outline: 0 none;
     color: rgba(23, 63, 115, 0.95);
     text-decoration: none;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
     font-family:helvetica,"lucida grande",tahoma,verdana,arial,sans-serif;
-}
-
-#footer {
-    background: url("images/footer-bg.png") no-repeat scroll left -48px #4B6485;
-    bottom: 0;
-    color: rgba(255, 255, 255, 0.75);
-    font-size: 12px;
-    height: 40px;
-    line-height: 40px;
-    margin: 0;
-    padding: 0 32px;
-    text-align: left;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.75);
-    text-transform: uppercase;
 }
 
 h5 {
@@ -131,6 +117,23 @@ h5 {
     text-decoration: none;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
+
+
+#footer {
+    background: url("images/footer-bg.png") no-repeat scroll left -48px #4B6485;
+    bottom: 0;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 12px;
+    height: 40px;
+    line-height: 40px;
+    margin: 0;
+    padding: 0 32px;
+    text-align: left;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.75);
+    text-transform: uppercase;
+}
+
+
 
 #content {
     min-height: 100%;

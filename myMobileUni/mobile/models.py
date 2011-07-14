@@ -61,9 +61,9 @@ class AnnouncementAdmin(admin.ModelAdmin):
 	list_filter = ('created',)
 
 class Picture(models.Model):
-	name = models.CharField(max_length=15)
+	name = models.CharField(max_length=60)
 	imagepic = models.ImageField(upload_to="static")
-	description = models.TextField()
+	description = models.CharField(max_length = 60)
 	created = models.DateField(auto_now_add=True)
 	updated = models.DateField(auto_now=True)
 	def __unicode__(self):
@@ -122,7 +122,7 @@ class Course(models.Model):
         	('1', 'First Semester'),
         	('2', 'Second Semester'),)
 	semester = models.CharField(max_length=10, choices=SEMESTER_CHOICES)
-	year = models.IntegerField(max_length = 4)#length of exactly 4
+	year = models.IntegerField()#length of exactly 4
 
 	department = models.ForeignKey(Department)
 	def __unicode__(self):

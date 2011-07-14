@@ -1,7 +1,7 @@
 {% extends "mobile/home.html" %}
 {% block content %}
 {% for emergency in emergency_list %}
-    <a href="/mobile/emergencydetail/{{ emergency.id }}">{{ emergency.name}}</a>
+    <a href="/mobile/emergencydetail/{{ emergency.id }}"><h3>{{ emergency.name}}</h3></a>
     <div>
 {% endfor %}
 {% endblock %}

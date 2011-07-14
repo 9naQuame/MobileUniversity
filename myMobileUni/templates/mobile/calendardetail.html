@@ -1,8 +1,7 @@
 {% extends "mobile/home.html" %}
 {% block content %}
 {% for a in events %}
-<div>{{ a.date }}</div>
-<div>{{ a.event }}</div>
-<p>
+<h5><div><h4><a>{{ a.event }}</a></h4></div>
+<div><h4>{{ a.date }}</h4></div></h5>
 {%endfor%}
 {% endblock %}

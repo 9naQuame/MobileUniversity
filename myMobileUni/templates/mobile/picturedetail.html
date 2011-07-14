@@ -1,6 +1,7 @@
 {% extends "mobile/home.html" %}
 {% block content %}
 <a href= "/mobile/picturelist"></a>
-     <div> <img src="/{{ picture.render_image }}/" /></div>
-   
+<div><h5><img src="/{{ picture.render_image }}/"/></h5></div> 
+<div><h5>{{ picture.name }}</h5></div> 
+<div><h4>{{ picture.description}}</h4></div> 
 {% endblock %}
