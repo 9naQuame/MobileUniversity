@@ -42,6 +42,7 @@ class SearchForm(forms.Form):
 
 class EventForm(ModelForm):
 	date = forms.DateField(widget=SelectDateWidget())
+	body = forms.CharField(widget=forms.Textarea(attrs={'class':'eventBody'}))
 	#time = forms.TimeField(widget=SelectTimeWidget())
 	class Meta:
 		model = Event
