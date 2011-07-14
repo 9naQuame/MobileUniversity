@@ -105,9 +105,8 @@ def exam_timetable(request, id, limit=100):
 	#exam_list = Exam.objects.filter(course__id__in=ids)
 	# --or--
 	# exam_list = Exam.objects.filter(course__department__id=id) # (not sure if this works with django-nonrel)
-
+        department_list = Department.objects.get(pk=id)
 	exam_list = Exam.objects.filter(department__id=id)
-	#print exam_list
 
 	'''
 	department = Department.objects.get(pk=id)
@@ -116,7 +115,7 @@ def exam_timetable(request, id, limit=100):
 	timetable_list= TimeTable.objects.all()
 	'''
 	t = loader.get_template('mobile/exam.html')
-	c = Context({'exams':exam_list})
+	c = Context({'department':department_list, 'exams':exam_list})
 	return HttpResponse(t.render(c))
 
 def home(request):
