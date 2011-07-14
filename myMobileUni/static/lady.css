@@ -22,7 +22,14 @@ body {
     width: 100%;
 }
 
+label {
 
+display: block;
+}
+
+.eventBody {
+	width: 205px;
+}	
 body {
     background: none repeat scroll 0 0 white;
     color: black;

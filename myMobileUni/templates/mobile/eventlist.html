@@ -10,8 +10,8 @@ background-color:#b0c4de;
 </style>
 </head>
 
-<div><h3>Events</h3>
-<a href="/mobile/eventadd/">Add Event</a></div>
+<div><h3>Events</h3></div>
+<p><a href="/mobile/eventadd/">Add Event</a></p>
 <br />
 {% for event in event_list reversed %}
 <a href="/mobile/eventdetail/{{ event.id }}"><div>{{ event.title }} >> 
