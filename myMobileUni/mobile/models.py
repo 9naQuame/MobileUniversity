@@ -87,16 +87,16 @@ class EmergencyAdmin(admin.ModelAdmin):
 	list_display = ('name','number','location')
 
 class Calendar(models.Model):
+	date =models.DateField()
+	year = models.IntegerField()
 	semester = models.IntegerField()
-	filename = models.FileField(upload_to="static")
+	event = models.CharField(max_length=200)
 	def __unicode__(self):
-		return self.semester
-	def render_file(self):
-		return self.filename.url
+		return str(self.date)
 
 class CalendarAdmin(admin.ModelAdmin):
-	list_display = ('semester','filename')
-	search_fields = ('semester',)
+	list_display = ('date','semester','year','event')
+	search_fields = ('semester','date')
 
 class Faculty(models.Model):
 	name = models.CharField(max_length = 60)
