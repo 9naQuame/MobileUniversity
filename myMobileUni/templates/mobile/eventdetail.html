@@ -1,7 +1,16 @@
 {% extends "mobile/home.html" %}
 {% block content %}
+<html>
+<head>
+<style type="text/css">
+body
+{
+background-color:#b0c4de;
+}
+</style>
+</head>
 
-<div><h4> {{events.title}} </h4></div>
+<div><h3> {{events.title}} </h3></div>
 <div>{{events.body}}</div>
 <br />
 <div>Organizers: {{events.organisers}}</div>

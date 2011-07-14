@@ -1,7 +1,18 @@
 {% extends "mobile/home.html" %}
 {% block content %}
 
-<div><h4>News</h4></div>
+<html>
+<head>
+<style type="text/css">
+body
+{
+background-color:#b0c4de;
+}
+</style>
+</head>
+
+
+<div><h3>News</h3></div>
 {% for news in news_list reversed %}
 <a href="/mobile/newsdetail/{{ news.id }}">{{ news.title }}</a>
 <div>{{ news.body_50 }} ...</div>

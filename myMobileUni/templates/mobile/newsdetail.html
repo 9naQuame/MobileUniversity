@@ -1,7 +1,16 @@
 {% extends "mobile/home.html" %}
 {% block content %}
+<html>
+<head>
+<style type="text/css">
+body
+{
+background-color:#b0c4de;
+}
+</style>
+</head>
 
-<div><h4>{{news.title}}</h4></div>
+<div><h3>{{news.title}}</h3></div>
 <div>Author: {{news.author}}</div>
 <div>Date Published: {{news.created}}</div>
 <br />
